@@ -18,7 +18,9 @@ function Navigation({ activeSection }) {
   return (
     <nav className="navigation">
       <div className="nav-content">
-        <div className="logo">{config.artist.name}</div>
+        <div className="logo">
+          <img src="/logo.png" alt={config.artist.name} />
+        </div>
         <ul className="nav-links">
           {navItems.map((item) => (
             <li key={item.id}>
@@ -65,9 +67,7 @@ function Bio() {
         <div className="bio-content">
           <div className="bio-left">
             <div className="bio-image">
-              <div className="image-placeholder">
-                <span>Photo</span>
-              </div>
+              <img src="/me.png" alt={config.artist.name} />
             </div>
           </div>
           <div className="bio-text">

@@ -16,9 +16,9 @@ export const config = {
   // Biographie
   bio: {
     paragraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+      "Après une 1ere vie comblée de kinésithérapeute ostéopathe tout autour de la planète, j'ai du changer de métier. Une opportunité que j'ai saisie pour choisir de vivre mon rêve de musicien.",
+      "Quelques années d'études intensives en classe de Composition Instrumentale et Electroaccoustique au Conservatoire et à l'Ecole Nationale de Musique de Lyon me permettent d'obtenir un  D.E.M. d'écriture et analyse, la validation de \"Culture de musique contemporaine\". Ainsi qu'un diplôme de musicien pro du CFPM de Lyon.",
+      "Aujourd'hui je suis compositeur de musique à l'image, professeur de piano classique et jazz, co-créateur d'un festival de musique Funk-Soul de la Croix-Rousse et organisateur de concerts en appartement avec mon association \"Concerts sous la Voûte\".",
     ],
   },
 
