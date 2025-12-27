@@ -7,7 +7,6 @@ function Navigation({ activeSection }) {
   const navItems = [
     { id: 'accueil', label: 'Accueil' },
     { id: 'bio', label: 'Biographie' },
-    { id: 'dates', label: 'Concerts' },
     { id: 'galerie', label: 'Galerie' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -58,7 +57,7 @@ function Hero() {
 // Bio Section (now includes SoundCloud player)
 function Bio() {
   const soundcloudUrl = encodeURIComponent(config.artist.soundcloud);
-  
+
   return (
     <section id="bio" className="bio">
       <div className="container">
@@ -77,7 +76,7 @@ function Bio() {
             ))}
           </div>
         </div>
-        
+
         {/* SoundCloud Player */}
         <div className="bio-player">
           <h3 className="player-title">Écouter</h3>
@@ -122,8 +121,8 @@ function Dates() {
               </div>
               <div className="concert-action">
                 {concert.status === 'available' ? (
-                  <a 
-                    href={concert.ticketUrl || '#'} 
+                  <a
+                    href={concert.ticketUrl || '#'}
                     className="btn-tickets"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -221,7 +220,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['accueil', 'bio', 'dates', 'galerie', 'contact'];
+      const sections = ['accueil', 'bio', 'galerie', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -249,7 +248,6 @@ function App() {
       <main>
         <Hero />
         <Bio />
-        <Dates />
         <Gallery />
         <Contact />
       </main>
