@@ -163,7 +163,7 @@ function Contact() {
         <h2 className="section-title">Contact</h2>
         <div className="contact-content">
           <p className="contact-text">
-            Pour toute demande de concert, collaboration ou renseignement,
+            Pour toute demande de cours, concert ou collaboration,
             n'hésitez pas à me contacter.
           </p>
 
