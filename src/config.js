@@ -76,7 +76,7 @@ export const config = {
   // Images de la galerie
   // Remplacez par les vrais chemins d'images
   gallery: [
-    { src: null, alt: "Image 1" },
+    { src: "studiomusiquelyon.png", alt: "Image 1" },
     { src: null, alt: "Image 2" },
     { src: null, alt: "Image 3" },
     { src: null, alt: "Image 4" },
