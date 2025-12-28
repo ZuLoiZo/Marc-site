@@ -261,6 +261,7 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <p className="footer-name">{config.artist.name}</p>
+          <p className="footer-telephone">Tel: +33 6 08 43 12 02</p>
           <p className="footer-copyright">
             © {new Date().getFullYear()} Tous droits réservés
           </p>

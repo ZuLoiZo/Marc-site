@@ -530,6 +530,12 @@ section {
   margin-bottom: var(--spacing-xs);
 }
 
+.footer-telephone {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
 .footer-copyright {
   font-size: 0.8rem;
   color: var(--color-text-subtle);
