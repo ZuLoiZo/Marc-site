@@ -56,7 +56,7 @@ function Hero() {
   );
 }
 
-// Bio Section (now includes SoundCloud player)
+// Bio Section
 function Bio() {
   const soundcloudUrl = encodeURIComponent(config.artist.soundcloud);
 
@@ -97,50 +97,6 @@ function Bio() {
   );
 }
 
-// Dates Section
-function Dates() {
-  if (config.concerts.length === 0) {
-    return null;
-  }
-
-  return (
-    <section id="dates" className="dates">
-      <div className="container">
-        <h2 className="section-title">Concerts</h2>
-        <div className="concerts-list">
-          {config.concerts.map((concert, index) => (
-            <article key={index} className="concert-item">
-              <div className="concert-date">
-                <span className="day">{concert.date}</span>
-                <span className="month">{concert.month}</span>
-                <span className="year">{concert.year}</span>
-              </div>
-              <div className="concert-info">
-                <h3>{concert.title}</h3>
-                <p>{concert.venue}</p>
-              </div>
-              <div className="concert-action">
-                {concert.status === 'available' ? (
-                  <a
-                    href={concert.ticketUrl || '#'}
-                    className="btn-tickets"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Réserver
-                  </a>
-                ) : (
-                  <span className="soldout">Complet</span>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // Gallery Section
 function Gallery() {
   return (
@@ -165,8 +121,42 @@ function Gallery() {
   );
 }
 
-// Contact Section
+// Contact Section with Netlify Forms
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Netlify Forms gère l'envoi automatiquement
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'contact',
+        ...formData
+      }).toString()
+    })
+      .then(() => {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      })
+      .catch((error) => alert('Erreur lors de l\'envoi. Réessayez.'));
+  };
+
   return (
     <section id="contact" className="contact">
       <div className="container">
@@ -176,22 +166,78 @@ function Contact() {
             Pour toute demande de concert, collaboration ou renseignement,
             n'hésitez pas à me contacter.
           </p>
-          <a href={`mailto:${config.artist.email}`} className="btn-contact">
-            <span>Envoyer un email</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
+
+          {isSubmitted && (
+            <div className="form-success">
+              ✓ Message envoyé avec succès ! Je vous répondrai rapidement.
+            </div>
+          )}
+
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            onSubmit={handleSubmit}
+            className="contact-form"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+
+            <div className="form-group">
+              <label htmlFor="name">Nom</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Votre nom"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="votre@email.com"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows="6"
+                placeholder="Votre message..."
+              ></textarea>
+            </div>
+
+            <button type="submit" className="btn-submit">
+              <span>Envoyer le message</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
     </section>
