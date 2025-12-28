@@ -121,7 +121,7 @@ function Gallery() {
   );
 }
 
-// Contact Section with Netlify Forms
+/// Contact Section avec Netlify Forms pour React/SPA
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -129,6 +129,7 @@ function Contact() {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -137,24 +138,32 @@ function Contact() {
     });
   };
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    // Netlify Forms gère l'envoi automatiquement
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        'form-name': 'contact',
-        ...formData
-      }).toString()
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formData })
     })
       .then(() => {
         setIsSubmitted(true);
+        setIsSubmitting(false);
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 5000);
       })
-      .catch((error) => alert('Erreur lors de l\'envoi. Réessayez.'));
+      .catch((error) => {
+        setIsSubmitting(false);
+        alert('Erreur lors de l\'envoi. Réessayez.');
+        console.error(error);
+      });
   };
 
   return (
@@ -163,7 +172,7 @@ function Contact() {
         <h2 className="section-title">Contact</h2>
         <div className="contact-content">
           <p className="contact-text">
-            Pour toute demande de cours, concert ou collaboration,
+            Pour toute demande de concert, collaboration ou renseignement,
             n'hésitez pas à me contacter.
           </p>
 
@@ -176,7 +185,6 @@ function Contact() {
           <form
             name="contact"
             method="POST"
-            data-netlify="true"
             onSubmit={handleSubmit}
             className="contact-form"
           >
@@ -221,21 +229,23 @@ function Contact() {
               ></textarea>
             </div>
 
-            <button type="submit" className="btn-submit">
-              <span>Envoyer le message</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+            <button type="submit" className="btn-submit" disabled={isSubmitting}>
+              <span>{isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}</span>
+              {!isSubmitting && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              )}
             </button>
           </form>
         </div>
