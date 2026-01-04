@@ -1,19 +1,33 @@
-// ============================================
-// CONFIGURATION DU SITE - Marc Blandel
-// ============================================
-// Modifiez ce fichier pour mettre à jour le contenu du site
-
+// Configuration du site web de l'artiste
 export const config = {
-  // Informations générales
   artist: {
     name: "Marc Blandel",
     title: "Pianiste & Compositeur",
     tagline: "L'émotion au bout des doigts",
     description: "Compositeur de musique à l'image, professeur de piano classique et jazz, co-créateur d'un festival de musique Funk-Soul et organisateur de concerts en appartement avec mon association \"Concerts sous la Voûte\".",
     email: "marcblandel4@gmail.com",
+
+    // ORDRE D'AFFICHAGE : YouTube → Photo+MP3 → SoundCloud
+
+    // 1. YouTube (en premier)
+   youtube: "https://www.youtube.com/watch?v=nXlzohO8mCg",
+
+    // 2. Photo + MP3 (au milieu)
+    // Chemin de la photo (à mettre dans /public/)
+    featuredImage: "expo.png",
+    // Description sous la photo
+    featuredImageCaption: "Bande son de l'exposition \"Entremelées\" de Constance LABEE et Claire ROMAIN à la galerie \"Art-Scenegallery\" à Paris (2025).",
+
+    // Chemin du fichier MP3 (à mettre dans /public/)
+    featuredAudio: "/featured-audio.mp3",
+
+    // 3. SoundCloud (en dernier)
     soundcloud: "https://soundcloud.com/user-572837353",
-    youtube: "https://www.youtube.com/watch?v=nXlzohO8mCg",
   },
+
+
+
+
 
   // Biographie
   bio: {

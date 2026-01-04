@@ -60,7 +60,7 @@ function Hero() {
   );
 }
 
-// Music Section avec SoundCloud ET YouTube
+// Music Section : YouTube → Photo+MP3 → SoundCloud
 function Music() {
   const soundcloudUrl = encodeURIComponent(config.artist.soundcloud);
 
@@ -78,25 +78,7 @@ function Music() {
       <div className="container">
         <h2 className="section-title">Écouter & Voir</h2>
 
-        {/* SoundCloud Player */}
-        {config.artist.soundcloud && (
-          <div className="soundcloud-player">
-            <h3 className="player-subtitle">Audio</h3>
-            <div className="soundcloud-embed">
-              <iframe
-                width="100%"
-                height="300"
-                scrolling="no"
-                frameBorder="no"
-                allow="autoplay"
-                src={`https://w.soundcloud.com/player/?url=${soundcloudUrl}&color=%23c9a962&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
-                title="SoundCloud Player"
-              ></iframe>
-            </div>
-          </div>
-        )}
-
-        {/* YouTube Player */}
+        {/* YouTube Player - EN PREMIER */}
         {youtubeId && (
           <div className="youtube-player">
             <h3 className="player-subtitle">Vidéo</h3>
@@ -107,6 +89,52 @@ function Music() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        )}
+
+        {/* Photo + MP3 - AU MILIEU */}
+        {(config.artist.featuredImage || config.artist.featuredAudio) && (
+          <div className="featured-content">
+            {/* Photo avec description */}
+            {config.artist.featuredImage && (
+              <div className="featured-image-block">
+                <div className="featured-image">
+                  <img src={config.artist.featuredImage} alt="Image mise en avant" />
+                </div>
+                {config.artist.featuredImageCaption && (
+                  <p className="image-caption">{config.artist.featuredImageCaption}</p>
+                )}
+              </div>
+            )}
+
+            {/* Lecteur MP3 */}
+            {config.artist.featuredAudio && (
+              <div className="audio-player-block">
+                <h3 className="player-subtitle">Extrait audio</h3>
+                <audio controls className="audio-player">
+                  <source src={config.artist.featuredAudio} type="audio/mpeg" />
+                  Votre navigateur ne supporte pas la lecture audio.
+                </audio>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* SoundCloud Player - EN DERNIER */}
+        {config.artist.soundcloud && (
+          <div className="soundcloud-player">
+            <h3 className="player-subtitle">Composition</h3>
+            <div className="soundcloud-embed">
+              <iframe
+                width="100%"
+                height="300"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src={`https://w.soundcloud.com/player/?url=${soundcloudUrl}&color=%23c9a962&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
+                title="SoundCloud Player"
               ></iframe>
             </div>
           </div>
