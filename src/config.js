@@ -9,16 +9,19 @@ export const config = {
     name: "Marc Blandel",
     title: "Pianiste & Compositeur",
     tagline: "L'émotion au bout des doigts",
+    description: "Compositeur de musique à l'image, professeur de piano classique et jazz, co-créateur d'un festival de musique Funk-Soul et organisateur de concerts en appartement avec mon association \"Concerts sous la Voûte\".",
     email: "marcblandel4@gmail.com",
     soundcloud: "https://soundcloud.com/user-572837353",
+    youtube: "https://www.youtube.com/watch?v=nXlzohO8mCg",
   },
 
   // Biographie
   bio: {
     paragraphs: [
-      "Après une 1ere vie comblée de kinésithérapeute ostéopathe tout autour de la planète, j'ai du changer de métier. Une opportunité que j'ai saisie pour choisir de vivre mon rêve de musicien.",
+      "Après une 1ere vie comblée en tant que kinésithérapeute ostéopathe tout autour de la planète, j'ai du changer de métier. Une opportunité que j'ai saisie pour choisir de vivre mon rêve de musicien.",
       "Quelques années d'études intensives en classe de Composition Instrumentale et Electroaccoustique au Conservatoire et à l'Ecole Nationale de Musique de Lyon me permettent d'obtenir un  D.E.M. d'écriture et analyse, la validation de \"Culture de musique contemporaine\". Ainsi qu'un diplôme de musicien pro du CFPM de Lyon.",
       "Aujourd'hui je suis compositeur de musique à l'image, professeur de piano classique et jazz, co-créateur d'un festival de musique Funk-Soul de la Croix-Rousse et organisateur de concerts en appartement avec mon association \"Concerts sous la Voûte\".",
+      "Aujourd’hui, l’écoute attentive et l’énergie de mes mains de thérapeute s’expriment à travers ma sensibilité créative, pour composer des musiques à l’image et partager des émotions : films, animations, dessins animés, expositions culturelles…",
     ],
   },
 
@@ -35,43 +38,7 @@ export const config = {
   //   status: "available" | "soldout",  // Disponibilité
   //   ticketUrl: "https://..." // (optionnel) Lien de réservation
   // }
-  concerts: [
-    {
-      date: "15",
-      month: "Jan",
-      year: "2025",
-      title: "Concert Solo",
-      venue: "Salle Pleyel, Paris",
-      status: "available",
-      ticketUrl: "#",
-    },
-    {
-      date: "28",
-      month: "Fév",
-      year: "2025",
-      title: "Récital Piano",
-      venue: "Opéra de Lyon",
-      status: "available",
-      ticketUrl: "#",
-    },
-    {
-      date: "12",
-      month: "Mars",
-      year: "2025",
-      title: "Festival de Printemps",
-      venue: "Philharmonie, Marseille",
-      status: "soldout",
-    },
-    {
-      date: "05",
-      month: "Avr",
-      year: "2025",
-      title: "Soirée Chopin",
-      venue: "Théâtre des Champs-Élysées",
-      status: "available",
-      ticketUrl: "#",
-    },
-  ],
+  concerts: [],
 
   // Images de la galerie
   // Remplacez par les vrais chemins d'images

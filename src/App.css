@@ -757,3 +757,145 @@ section {
     padding: var(--spacing-lg) 0;
   }
 }
+
+/* ============================================
+   AJOUTS / MODIFICATIONS CSS
+============================================ */
+
+/* Hero Description (nouvelle ligne sous le tagline) */
+.hero-description {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: var(--spacing-md) auto 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   MUSIC SECTION (SoundCloud séparé)
+============================================ */
+.music {
+  background: var(--color-bg);
+  padding: var(--spacing-xl) 0;
+}
+
+.music .section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-accent);
+}
+
+.soundcloud-embed {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+}
+
+.soundcloud-embed iframe {
+  display: block;
+}
+
+/* ============================================
+   BIO SECTION (mise à jour - sans player)
+============================================ */
+.bio {
+  background: var(--color-bg-elevated);
+}
+
+/* Supprimer les anciens styles de .bio-player s'ils existent */
+.bio-player {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-description {
+    font-size: 1rem;
+    padding: 0 var(--spacing-md);
+  }
+}
+
+/* ============================================
+   MUSIC SECTION - SoundCloud + YouTube
+============================================ */
+.music {
+  background: var(--color-bg);
+  padding: var(--spacing-xl) 0;
+}
+
+.music .section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-accent);
+}
+
+/* Sous-titres des lecteurs */
+.player-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* SoundCloud Player */
+.soundcloud-player {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.soundcloud-embed {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+}
+
+.soundcloud-embed iframe {
+  display: block;
+}
+
+/* YouTube Player */
+.youtube-player {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Responsive 16:9 Video Wrapper */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* Ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .soundcloud-player,
+  .youtube-player {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .player-subtitle {
+    font-size: 1.1rem;
+  }
+}

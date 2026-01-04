@@ -6,6 +6,7 @@ import './App.css';
 function Navigation({ activeSection }) {
   const navItems = [
     { id: 'accueil', label: 'Accueil' },
+    { id: 'musique', label: 'Musique' },
     { id: 'bio', label: 'Biographie' },
     { id: 'galerie', label: 'Galerie' },
     { id: 'contact', label: 'Contact' },
@@ -47,6 +48,9 @@ function Hero() {
         <h1 className="hero-title">{config.artist.name}</h1>
         <div className="hero-line"></div>
         <p className="hero-tagline">{config.artist.tagline}</p>
+        {config.artist.description && (
+          <p className="hero-description">{config.artist.description}</p>
+        )}
       </div>
       <div className="scroll-indicator">
         <span>Découvrir</span>
@@ -56,10 +60,64 @@ function Hero() {
   );
 }
 
-// Bio Section
-function Bio() {
+// Music Section avec SoundCloud ET YouTube
+function Music() {
   const soundcloudUrl = encodeURIComponent(config.artist.soundcloud);
 
+  // Extraire l'ID YouTube
+  const getYouTubeId = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  const youtubeId = getYouTubeId(config.artist.youtube);
+
+  return (
+    <section id="musique" className="music">
+      <div className="container">
+        <h2 className="section-title">Écouter & Voir</h2>
+
+        {/* SoundCloud Player */}
+        {config.artist.soundcloud && (
+          <div className="soundcloud-player">
+            <h3 className="player-subtitle">Audio</h3>
+            <div className="soundcloud-embed">
+              <iframe
+                width="100%"
+                height="300"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src={`https://w.soundcloud.com/player/?url=${soundcloudUrl}&color=%23c9a962&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
+                title="SoundCloud Player"
+              ></iframe>
+            </div>
+          </div>
+        )}
+
+        {/* YouTube Player */}
+        {youtubeId && (
+          <div className="youtube-player">
+            <h3 className="player-subtitle">Vidéo</h3>
+            <div className="video-wrapper">
+              <iframe
+                src={`https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// Bio Section
+function Bio() {
   return (
     <section id="bio" className="bio">
       <div className="container">
@@ -74,22 +132,6 @@ function Bio() {
             {config.bio.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
-          </div>
-        </div>
-
-        {/* SoundCloud Player */}
-        <div className="bio-player">
-          <h3 className="player-title">Écouter</h3>
-          <div className="soundcloud-embed">
-            <iframe
-              width="100%"
-              height="300"
-              scrolling="no"
-              frameBorder="no"
-              allow="autoplay"
-              src={`https://w.soundcloud.com/player/?url=${soundcloudUrl}&color=%23c9a962&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
-              title="SoundCloud Player"
-            ></iframe>
           </div>
         </div>
       </div>
@@ -121,7 +163,7 @@ function Gallery() {
   );
 }
 
-/// Contact Section avec Netlify Forms pour React/SPA
+// Contact Section
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -261,7 +303,6 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <p className="footer-name">{config.artist.name}</p>
-          <p className="footer-telephone">Tel: +33 6 08 43 12 02</p>
           <p className="footer-copyright">
             © {new Date().getFullYear()} Tous droits réservés
           </p>
@@ -277,7 +318,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['accueil', 'bio', 'galerie', 'contact'];
+      const sections = ['accueil', 'musique', 'bio', 'galerie', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -304,6 +345,7 @@ function App() {
       <Navigation activeSection={activeSection} />
       <main>
         <Hero />
+        <Music />
         <Bio />
         <Gallery />
         <Contact />
