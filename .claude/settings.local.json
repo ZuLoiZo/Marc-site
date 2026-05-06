@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/c/**)",
+      "Read(///wsl.localhost/Ubuntu//**)",
+      "Bash(cp \"/c/Users/Admin/Downloads/Teaser Instants Polaroid.mp4\" \"/home/nils/projects/Marc-site/public/instants-polaroid.mp4\")",
+      "Bash(cp \"/c/Users/Admin/Downloads/affiche expo.jpeg\" \"/home/nils/projects/Marc-site/public/instants-polaroid.jpg\")",
+      "Read(//c/Users/Admin/projects/Marc-site/**)",
+      "Bash(cp \"/c/Users/Admin/Downloads/Teaser Instants Polaroid.mp4\" \"public/instants-polaroid.mp4\")",
+      "Bash(cp \"/c/Users/Admin/Downloads/affiche expo.jpeg\" \"public/instants-polaroid.jpg\")",
+      "Bash(ffmpeg -version)",
+      "Bash(git reset *)",
+      "Bash(git rm *)",
+      "Bash(wsl ffmpeg *)",
+      "Bash(wsl sudo *)",
+      "Bash(wsl which *)",
+      "Bash(wsl -- bash -c \"sudo apt-get install -y ffmpeg\")",
+      "Bash(wsl -- bash -c \"which ffmpeg 2>/dev/null && echo READY || echo NOT_READY\")",
+      "Bash(wsl -- bash -c \"apt-cache show ffmpeg 2>/dev/null | head -3; dpkg -l ffmpeg 2>/dev/null | tail -1\")",
+      "Bash(wsl -- bash -c \"sudo apt-get update -qq && sudo apt-get install -y ffmpeg\")",
+      "Bash(ffmpeg.exe -version)",
+      "Bash(where ffmpeg *)",
+      "Bash(wsl -- bash -c \"ffmpeg -i /home/nils/projects/Marc-site/public/instants-polaroid.mp4 -vn -acodec libmp3lame -q:a 4 /home/nils/projects/Marc-site/public/instants-polaroid.mp3 -y 2>&1\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ]
+  }
+}
