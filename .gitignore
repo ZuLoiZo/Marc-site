@@ -2,3 +2,5 @@ node_modules/
 dist/
 .env
 *.log
+public/instants-polaroid.mp4
+*.mp4

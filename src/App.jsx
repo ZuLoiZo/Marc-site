@@ -94,33 +94,32 @@ function Music() {
           </div>
         )}
 
-        {/* Photo + MP3 - AU MILIEU */}
-        {(config.artist.featuredImage || config.artist.featuredAudio) && (
-          <div className="featured-content">
-            {/* Photo avec description */}
-            {config.artist.featuredImage && (
+        {/* Réalisations - ENTRE YOUTUBE ET SOUNDCLOUD */}
+        {config.realisations && config.realisations.map((item, index) => (
+          <div key={index} className="featured-content">
+            {item.image && (
               <div className="featured-image-block">
                 <div className="featured-image">
-                  <img src={config.artist.featuredImage} alt="Image mise en avant" />
+                  <img src={item.image} alt={`Réalisation ${index + 1}`} />
                 </div>
-                {config.artist.featuredImageCaption && (
-                  <p className="image-caption">{config.artist.featuredImageCaption}</p>
+                {item.caption && (
+                  <p className="image-caption">{item.caption}</p>
                 )}
               </div>
             )}
-
-            {/* Lecteur MP3 */}
-            {config.artist.featuredAudio && (
+            {item.audio && (
               <div className="audio-player-block">
-                <h3 className="player-subtitle">Extrait audio</h3>
+                <h3 className="player-subtitle">
+                  {item.audioCaption || "Extrait audio"}
+                </h3>
                 <audio controls className="audio-player">
-                  <source src={config.artist.featuredAudio} type="audio/mpeg" />
+                  <source src={item.audio} type={item.audioType} />
                   Votre navigateur ne supporte pas la lecture audio.
                 </audio>
               </div>
             )}
           </div>
-        )}
+        ))}
 
         {/* SoundCloud Player - EN DERNIER */}
         {config.artist.soundcloud && (

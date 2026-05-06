@@ -7,19 +7,10 @@ export const config = {
     description: "Compositeur de musique à l'image, professeur de piano classique et jazz, co-créateur d'un festival de musique Funk-Soul et organisateur de concerts en appartement avec mon association \"Concerts sous la Voûte\".",
     email: "marcblandel4@gmail.com",
 
-    // ORDRE D'AFFICHAGE : YouTube → Photo+MP3 → SoundCloud
+    // ORDRE D'AFFICHAGE : YouTube → Réalisations → SoundCloud
 
     // 1. YouTube (en premier)
-   youtube: "https://www.youtube.com/watch?v=nXlzohO8mCg",
-
-    // 2. Photo + MP3 (au milieu)
-    // Chemin de la photo (à mettre dans /public/)
-    featuredImage: "expo.png",
-    // Description sous la photo
-    featuredImageCaption: "Bande son de l'exposition \"Entremelées\" de Constance LABEE et Claire ROMAIN à la galerie \"Art-Scenegallery\" à Paris (2025).",
-
-    // Chemin du fichier MP3 (à mettre dans /public/)
-    featuredAudio: "/featured-audio.mp3",
+    youtube: "https://www.youtube.com/watch?v=nXlzohO8mCg",
 
     // 3. SoundCloud (en dernier)
     soundcloud: "https://soundcloud.com/user-572837353",
@@ -28,6 +19,24 @@ export const config = {
 
 
 
+
+  // 2. Réalisations (entre YouTube et SoundCloud)
+  // Chaque entrée : image (dans /public/), caption, audio (dans /public/), audioType
+  realisations: [
+    {
+      image: "instants-polaroid.jpg",
+      caption: "Exposition \"INSTANTS POLAROID\" d'Alain Guillemaud aux Archives de Lyon du 11/03/26 au 11/07/26",
+      audio: "/instants-polaroid.mp3",
+      audioType: "audio/mpeg",
+      audioCaption: "Musique originale et sound design pour l'exposition",
+    },
+    {
+      image: "expo.png",
+      caption: "Bande son de l'exposition \"Entremelées\" de Constance LABEE et Claire ROMAIN à la galerie \"Art-Scenegallery\" à Paris (2025).",
+      audio: "/featured-audio.mp3",
+      audioType: "audio/mpeg",
+    },
+  ],
 
   // Biographie
   bio: {
